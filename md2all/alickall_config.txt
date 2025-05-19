@@ -21,7 +21,7 @@
 }
 
 p {/*段落*/
-  margin: 1.5em 0px;
+  margin: 0.5em 0px;
 }
 h1,h2,h3,h4,h5,h6 {
   margin: 1.5em 0px;
@@ -99,51 +99,87 @@ text-align: left;
 }
 
 
+ul { /*无序列表*/
+padding-left: 32px;
+line-height: 1.2;
+list-style-type: disc;
+margin: 0px;
+}
+
+ol{ /*有序列表*/
+padding-left: 32px;
+line-height: 1.2;
+list-style-type: disc;
+margin: 1px;
+}
 
 
-ul, ol {
-  padding-left: 32px;
-  line-height: 1.2;
-  margin: 0 0;
+ol ul {
+padding-left: 32px;
+line-height: 1.2;
+margin: 0px;
 }
-ul{ /*无序列表*/
-    list-style-type: disc;
-  margin: 0 0;
-}
-ol { /*有序列表*/
-  list-style-type: decimal;
-  margin: 0 0;
-}
-li *  
-{
- /* color: #3e3e3e;*/
-} 
 
-li{  /*在公众号下，改变不了li符号的属性（如颜色），并会影响其子元素的属性;而在其它博客平台中，则能正常使用*/ 
-    margin-bottom: 0.5em;
-/*  color:#159957; */    
+ul ul, ol ol {
+padding-left: 32px;
+line-height: 1.2;
+margin-bottom:  1.1em;
 }
 .code_size_default  /*代码块默认size*/
 {
   line-height: 18px;
-  font-size: 14px; 
-  font-weight:normal;
-  word-spacing:0px; 
-  letter-spacing:0px; 
+  font-size: 12px;
+  font-weight: normal;
+  word-spacing: 0px; 
+  letter-spacing: 0px;
 }
+
 .code_size_tight /*代码块紧凑size*/
 {
-   line-height: 15px; 
-   font-size: 11px; 
-   font-weight:normal;
-   word-spacing:-3px; 
-   letter-spacing:0px; 
+  line-height: 15px;
+  font-size: 11px;
+  font-weight: normal;
+  word-spacing: -3px; 
+  letter-spacing: 0px;
 }
+
+pre {
+  /* 新增pre全局样式 */
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.55) 0px 2px 10px;
+  text-align: left;
+  margin: 3px 0 10px;  /* 调整上边距适配装饰条 */
+  padding: 0;
+  overflow: hidden;
+  position: relative;   /* 为伪元素定位准备 */
+}
+
+pre::before {
+  /* 新增顶部装饰条 */
+  content: '';
+  display: block;
+  background: url("https://mmbiz.qpic.cn/mmbiz_svg/McYMgia19V0Uk9ibJWRy9avTw1R1QoBlBKF8M9lI5Nq2BNNRhBicbRvytQF8ibVwsJU6NAdhBtL7R4UDla2NHhQ87qibNv2mGpNeF/640?wx_fmt=svg&from=appmsg&tp=webp&wxfrom=15&wx_lazy=1") 10px 10px / 40px no-repeat;
+  height: 30px;
+  width: 100%;
+  margin-bottom: -7px;
+  background-color: #282c34;  /* 与代码块背景色一致 */
+  border-radius: 5px 5px 0 0; /* 顶部圆角匹配 */
+}
+
 pre code /*代码块*/
 {           
-     font-family: Consolas, Inconsolata, Courier, monospace;
-    border-radius: 0px;
+  font-family: Consolas, Monaco, Menlo, monospace;
+  border-radius: 0 0 5px 5px; /* 仅保留底部圆角 */
+  overflow-x: auto;
+  padding: 16px;
+  padding-top: 23px;   /* 15px + 调整后的间距 */
+  color: #abb2bf;
+  background: #282c34;
+  display: block;
+  box-sizing: border-box; /* 确保padding计算方式统一 */
 }
+
+
 blockquote { /*引用块*/
   display: block;
   padding: 15px 1rem;
@@ -216,42 +252,42 @@ figcaption/*图片描述文字*/
   color:#999;
   font-size: 0.7em;
 }
-
 /*================表格开始================*/
-table
-{
- display:table;
- width: 100% ;
- text-align: left;
-}
-tbody {
-  border: 0;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 1em 0; /* 添加表格外间距 */
 }
 
-table tr {
-  border: 0;
-  border-top: 1px solid #CCC;
-  background-color: white;
- 
+/* 修复表头列错位的关键设置 */
+th {
+  border-bottom: 2px solid #666 !important; /* 强化表头分隔线 */
 }
 
-/*隔行改变行的背景色，如需要请打开*/
-/*
-table tr:nth-child(2n) {
-  background-color: #F8F8F8;
-}
-*/
-
-table tr th, table tr td {
-  font-size: 1em;
+table th,
+table td {
   border: 1px solid #CCC;
   padding: 0.5em 1em;
   text-align: left;
+  vertical-align: top;
+  position: relative; /* 解决某些浏览器边框渲染问题 */
 }
-/*表头的属性*/
-table tr th {
- font-weight: bold;
+
+/* 表头特殊样式 */
+table th {
   background-color: #F0F0F0;
+  font-weight: bold;
+}
+
+/* 隔行变色方案 */
+table tr:nth-child(even) {
+  background-color: #F8F8F8;
+}
+
+/* 首列加粗（可选） */
+table td:first-child {
+  font-weight: 500;
 }
 /*================表格结束================*/
 
