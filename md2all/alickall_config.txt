@@ -99,36 +99,30 @@ text-align: left;
 }
 
 
-ul { /*无序列表*/
-padding-left: 32px;
-line-height: 1.2;
-list-style-type: disc;
-margin: 0px;
+
+
+ul, ol {
+  padding-left: 32px;
+  line-height: 1.2;
+  margin: 0 0;
 }
-
-ol{ /*有序列表*/
-padding-left: 32px;
-line-height: 1.2;
-list-style-type: disc;
-margin: 1px;
+ul{ /*无序列表*/
+    list-style-type: disc;
+  margin: 0 0;
 }
-
-
-ol ul {
-padding-left: 32px;
-line-height: 1.2;
-margin: 0px;
+ol { /*有序列表*/
+  list-style-type: decimal;
+  margin: 0 0;
 }
+li *  
+{
+ /* color: #3e3e3e;*/
+} 
 
-ul ul, ol ol {
-padding-left: 32px;
-line-height: 1.2;
-margin-bottom:  1.1em;
+li{  /*在公众号下，改变不了li符号的属性（如颜色），并会影响其子元素的属性;而在其它博客平台中，则能正常使用*/ 
+    margin-bottom: 0.5em;
+/*  color:#159957; */    
 }
-
-
-
-
 .code_size_default  /*代码块默认size*/
 {
   line-height: 18px;
